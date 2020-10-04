@@ -17,12 +17,8 @@ Content-Type: application/json
 {
   "products": [
     {
-      "product": "5f7967633a361440fa466081",
+      "product": "5f799da9cb1e271ee9b2ab00",
       "quantity": 10
-    },
-    {
-      "product": "5f7967633a3614719b466080",
-      "quantity": 1
     }
   ],
   "shippingName": "neversitup",

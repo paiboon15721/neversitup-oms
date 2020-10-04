@@ -9,6 +9,7 @@ module.exports = r => {
   })
 
   r.get('/users/:id', async ctx => {
+    // Get user detail API used by order service in order detail API.
     const user = await User.findById(ctx.params.id).select('-password').lean()
     ctx.body = user
   })
