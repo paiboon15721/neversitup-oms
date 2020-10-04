@@ -1,6 +1,10 @@
 # The simple microservices e-commerce platform example (Neversitup Coding Challenge)
 
-This repository consists of 8 containers
+## Architecture
+
+![Architecture](https://raw.githubusercontent.com/paiboon15721/neversitup-oms/main/architecture.jpg).
+
+## This repository consists of 8 containers
 
 1. [Traefik](https://doc.traefik.io/traefik/) as a reverse proxy
 
@@ -48,10 +52,6 @@ This repository consists of 8 containers
 
 8. Order DB (Used by Order Service)
 
-## Architecture
-
-![Architecture](https://raw.githubusercontent.com/paiboon15721/neversitup-oms/main/architecture.jpg).
-
 ## Quick start
 
 1. Clone this repository
@@ -78,6 +78,20 @@ docker-compose up -d
 4. Now, you can play around with all APIs
 
 \*\* You need to get the productId from `GET {{host}}/products` API to get the existing productId for creating order
+
+## Time Spent
+
+1. Conceptual architecture design 1 hour
+
+2. Detail API design 1 hour
+
+3. Developing 3 hours
+
+4. Testing 1 hour
+
+5. Writing README 1 hour
+
+Total: 7 hours
 
 ## License
 
