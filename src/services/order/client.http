@@ -1,0 +1,10 @@
+@host = http://localhost:4000
+
+GET {{host}}/products
+
+###
+
+GET {{host}}/products/5f7966b985765919c8cf4e2f
+
+###
+POST {{host}}/init-db

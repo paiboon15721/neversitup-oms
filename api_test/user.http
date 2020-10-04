@@ -1,0 +1,14 @@
+@host = http://localhost
+
+GET {{host}}/profile
+Host: user.localhost
+
+###
+
+GET {{host}}/orders?page=1
+Host: user.localhost
+
+###
+
+GET {{host}}/users/5f797f2ef068c78a72117efe
+Host: user.localhost

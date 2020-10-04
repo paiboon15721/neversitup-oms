@@ -1,0 +1,14 @@
+@host = http://localhost
+
+GET {{host}}/products
+Host: product.localhost
+
+###
+
+GET {{host}}/products/5f7967633a361440fa466081
+Host: product.localhost
+
+###
+
+POST {{host}}/init-db
+Host: product.localhost

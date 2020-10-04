@@ -1,0 +1,33 @@
+@host = http://localhost
+
+GET {{host}}/auth
+Host: localhost
+
+###
+
+POST {{host}}/register
+Host: localhost
+Content-Type: application/json
+
+{
+  "email": "paiboon15721@gmail.com",
+  "password": "1234",
+  "name": "paiboon"
+}
+
+###
+
+POST {{host}}/login
+Host: localhost
+Content-Type: application/json
+
+{
+  "email": "paiboon15721@gmail.com",
+  "password": "1234"
+}
+
+###
+
+POST {{host}}/logout
+Host: localhost
+Content-Type: application/json

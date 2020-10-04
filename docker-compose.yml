@@ -1,0 +1,88 @@
+version: '3'
+
+services:
+  reverse-proxy:
+    image: traefik:v2.3
+    command:
+      - --api.insecure=true
+      - --providers.docker
+      - --accesslog=true
+      - --accesslog.filepath=./access.log
+      - --accesslog.bufferingsize=100
+    ports:
+      # The HTTP port
+      - '80:80'
+      # The Web UI (enabled by --api.insecure=true)
+      - '8080:8080'
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+
+  auth-service:
+    image: paiboon15721/neversitup-auth
+    restart: always
+    depends_on:
+      - user-db
+    environment:
+      - MONGO_DB_HOST=user-db
+      - JWT_SECRET=sd;lfjsjoisdofpupewfjl
+    labels:
+      - 'traefik.http.routers.auth.rule=Host(`localhost`)'
+
+  user-service:
+    image: paiboon15721/neversitup-user
+    restart: always
+    depends_on:
+      - auth-service
+      - user-db
+    environment:
+      - MONGO_DB_HOST=user-db
+    labels:
+      - 'traefik.http.middlewares.check-auth.forwardauth.address=http://localhost/auth'
+      - 'traefik.http.routers.user.middlewares=check-auth@docker'
+      - 'traefik.http.routers.user.rule=Host(`user.localhost`)'
+
+  product-service:
+    image: paiboon15721/neversitup-product
+    restart: always
+    depends_on:
+      - product-db
+    environment:
+      - MONGO_DB_HOST=product-db
+    labels:
+      - 'traefik.http.routers.product.rule=Host(`product.localhost`)'
+
+  order-service:
+    image: paiboon15721/neversitup-order
+    restart: always
+    depends_on:
+      - order-db
+      - user-service
+    environment:
+      - MONGO_DB_HOST=order-db
+    labels:
+      - 'traefik.http.middlewares.check-auth.forwardauth.address=http://localhost/auth'
+      - 'traefik.http.routers.order.middlewares=check-auth@docker'
+      - 'traefik.http.routers.order.rule=Host(`order.localhost`)'
+
+  user-db:
+    image: mongo
+    restart: always
+    volumes:
+      - user-data:/data/db
+
+  product-db:
+    image: mongo
+    restart: always
+    volumes:
+      - product-data:/data/db
+
+  order-db:
+    image: mongo
+    restart: always
+    volumes:
+      - order-data:/data/db
+
+volumes:
+  user-data:
+  product-data:
+  order-data:

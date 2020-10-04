@@ -1,0 +1,40 @@
+@host = http://localhost
+
+GET {{host}}/orders
+Host: order.localhost
+
+###
+
+GET {{host}}/orders/5f798a4fb2b1652689f8588d
+Host: order.localhost
+
+###
+
+POST {{host}}/orders
+Host: order.localhost
+Content-Type: application/json
+
+{
+  "products": [
+    {
+      "product": "5f7967633a361440fa466081",
+      "quantity": 10
+    },
+    {
+      "product": "5f7967633a3614719b466080",
+      "quantity": 1
+    }
+  ],
+  "shippingName": "neversitup",
+  "shippingAddress": "silom"
+}
+
+###
+
+PUT {{host}}/orders/5f798a4fb2b1652689f8588d
+Host: order.localhost
+Content-Type: application/json
+
+{
+  "cancel": true
+}
