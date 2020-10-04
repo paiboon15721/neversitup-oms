@@ -35,7 +35,7 @@ This repository consists of 8 containers
 
 ## Architecture
 
-![Architecture](https://raw.githubusercontent.com/paiboon15721/neversitup-orm/master/architecture.jpg).
+![Architecture](https://raw.githubusercontent.com/paiboon15721/neversitup-orm/main/architecture.jpg).
 
 ## Quick start
 
