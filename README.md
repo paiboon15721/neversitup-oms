@@ -33,6 +33,10 @@ This repository consists of 8 containers
 
 8. Order DB (Used by Order Service)
 
+## Architecture
+
+![Architecture](https://raw.githubusercontent.com/paiboon15721/neversitup-orm/master/architecture.jpg).
+
 ## Quick start
 
 1. Clone this repository
